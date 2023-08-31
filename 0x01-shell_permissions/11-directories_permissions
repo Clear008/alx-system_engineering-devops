@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod -R oug+x current directory
+chmod -R a+x 
