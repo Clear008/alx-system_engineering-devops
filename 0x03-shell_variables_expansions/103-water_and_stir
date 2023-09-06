@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "obase=8; ibase=5; $(echo "WATER + STIR" | bc)" | bc
+decimal_result=$(( (36#$(echo $WATER | tr -cd 'ewatrd')) + (36#$(echo $STIR | tr -cd 'ewatrd')) )); base8_result=""; while [ $decimal_result -gt 0 ]; do remainder=$((decimal_result % 8)); base8_result="$remainder$base8_result"; decimal_result=$((decimal_result / 8)); done; echo "The result in base 8 is: $base8_result"
