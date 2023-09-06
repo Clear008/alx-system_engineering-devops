@@ -1,2 +1,2 @@
 #!/bin/bash
-printf "%X" "${$((echo $((#5#${WATER})) + echo $((#5#${STIR}))))}"
+echo "obase=8; ibase=5; $(echo "WATER + STIR" | bc)" | bc
