@@ -1,6 +1,3 @@
-# Web Infrastructure README
-![Alt Text](Image URL)
-
 ## Load Balancer (HAProxy):
 
 - **Addition**: HAProxy is added to distribute incoming traffic across multiple servers.

@@ -15,9 +15,9 @@ The web server receives requests from your browser when you enter a website's ad
 ## Application Server
 While not always present, an application server sits behind the web server, handling complex tasks. It interacts with databases, processes user data, and generates dynamic content, like personalized recommendations or shopping carts. Examples include Java EE servers like Tomcat or WildFly.
 
-## What is the role of the database:
+## What is the role of the database
 The database stores website data like product information, user accounts, and website content. This data is organized and easily accessible for the web server or application server to retrieve and use when building the website you see. Popular database systems include MySQL, PostgreSQL, and MongoDB.
 
-## What is the server using to communicate with the computer of the user requesting the website:
+## What is the server using to communicate with the computer of the user requesting the website
 Communication happens through a protocol called HTTP (Hypertext Transfer Protocol). This protocol defines how messages are formatted and exchanged between the server and your browser. When you request a website, your browser sends an HTTP request to the server, and the server responds with an HTTP response containing the website's data.
 
