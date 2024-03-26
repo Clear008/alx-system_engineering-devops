@@ -15,3 +15,4 @@ sudo chown -R ubuntu /var/www
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
 sudo sed -i "30i $ADD301_REDIRECT" /etc/nginx/sites-available/default
 sudo service nginx restart
+
