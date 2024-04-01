@@ -1,4 +1,5 @@
 # automate the task of creating a custom HTTP header response, but with Puppet
+## Ensure nginx package is installed
 package { 'nginx':
   ensure => 'installed',
 }
@@ -9,20 +10,14 @@ file { '/var/www/html/index.html':
   content => 'Hello World!',
 }
 
-# Add custom HTTP header to nginx configuration
-file_line { 'add_custom_header':
-  ensure => present,
-  path   => '/etc/nginx/sites-available/default',
-  line   => '    add_header X-Served-By $hostname;',
-  match  => '^[\s\t]*listen 80 default_server;$',
+exec {'redirect_me':
+  command  => 'sed -i "24i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;" /etc/nginx/sites-available/default',
+  provider => 'shell'
 }
 
-# Configure redirection
-file_line { 'configure_redirection':
-  ensure  => 'present',
-  path    => '/etc/nginx/sites-available/default',
-  line    => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
-  require => Package['nginx'],
+exec {'HTTP header':
+  command  => 'sed -i "25i\	add_header X-Served-By \$hostname;" /etc/nginx/sites-available/default',
+  provider => 'shell'
 }
 
 # Ensure nginx service is running and restart if needed
