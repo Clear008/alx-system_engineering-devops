@@ -1,4 +1,4 @@
-# Ensure nginx package is installed
+# automate the task of creating a custom HTTP header response, but with Puppet
 package { 'nginx':
   ensure => 'installed',
 }
@@ -30,4 +30,3 @@ service { 'nginx':
   ensure  => running,
   require => Package['nginx'],
 }
-
