@@ -10,10 +10,11 @@ file { '/var/www/html/index.html':
 }
 
 # Add custom HTTP header to nginx configuration
-# Add custom HTTP header to nginx configuration
-exec {'HTTP header':
-  command  => 'sed -i "25i\	add_header X-Served-By \$hostname;" /etc/nginx/sites-available/default',
-  provider => 'shell'
+file_line { 'add_custom_header':
+  ensure => present,
+  path   => '/etc/nginx/sites-available/default',
+  line   => '    add_header X-Served-By $hostname;',
+  match  => '^[\s\t]*listen 80 default_server;$',
 }
 
 # Configure redirection
@@ -29,3 +30,4 @@ service { 'nginx':
   ensure  => running,
   require => Package['nginx'],
 }
+
