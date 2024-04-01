@@ -21,9 +21,9 @@ file_line { 'add_custom_header':
 
 # Configure redirection
 file_line { 'configure_redirection':
-  ensure => 'present',
-  path   => '/etc/nginx/sites-available/default',
-  line   => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
+  ensure  => 'present',
+  path    => '/etc/nginx/sites-available/default',
+  line    => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
   require => Package['nginx'],
 }
 
