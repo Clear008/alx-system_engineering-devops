@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#Configure HAproxy on lb-01 server.
+
+# Update package repositories and Install HAProxy
+apt-get update
+apt-get install -y haproxy
+
+cat <<EOF > /etc/haproxy/haproxy.cfg
+
+defaults
+    log     global
+    mode    http
+    option  httplog
+    option  dontlognull
+
+frontend http_front
+    bind *:80
+    stats uri /haproxy?stats
+    default_backend http_back
+
+backend http_back
+    balance roundrobin
+    server 520096-web-01 18.206.208.113:80 check
+    server 520096-web-02 18.206.232.93:80 check
+EOF
+
+
+echo "ENABLED=1" > /etc/default/haproxy
+
+# Restart HAProxy service
+service haproxy restart
