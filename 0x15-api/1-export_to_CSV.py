@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Exports to-do list information for a given employee ID to CSV format."""
+"""Export data in the CSV format of an employee."""
 import csv
 import requests
 import sys
@@ -11,8 +11,8 @@ if __name__ == "__main__":
     username = user.get("username")
     todos = requests.get(url + "todos", params={"userId": user_id}).json()
 
-    with open("{}.csv".format(user_id), "w", newline="") as csvfile:
-        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+    with open("{}.csv".format(user_id), "w", newline="") as file:
+        writer = csv.writer(file, quoting=csv.QUOTE_ALL)
         [writer.writerow(
-            [user_id, username, t.get("completed"), t.get("title")]
-         ) for t in todos]
+            [user_id, username, s.get("completed"), s.get("title")]
+         ) for s in todos]
