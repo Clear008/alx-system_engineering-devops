@@ -2,7 +2,6 @@
 """Export data in the JSON format of all employees."""
 import json
 import requests
-import sys
 
 
 if __name__ == "__main__":
