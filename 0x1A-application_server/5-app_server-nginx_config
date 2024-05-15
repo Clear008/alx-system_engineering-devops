@@ -103,7 +103,7 @@ server {
 	location /static {
 
 	     alias web_dynamic/static/;	
-
+	}
 	
 	#Error 404
 
